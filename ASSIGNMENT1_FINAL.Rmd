@@ -1,0 +1,105 @@
+---
+title: "Assignment1_FINAL"
+author: "Sandra Fogg"
+date: "2/3/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include=FALSE, echo=FALSE}
+# Load packages
+library(tidyverse)
+library(corrplot)
+library(janitor)
+library(lubridate)
+library(ggimage)
+library(kableExtra)
+library(pwr)
+library(knitr)
+library(kableExtra)
+library(plotly)
+library(extrafont)
+library(ggrepel)
+library(vcdExtra)
+library(effsize)
+library(leaflet)
+library(car)
+library(stargazer)
+library(descr)
+library(magrittr)
+```
+
+```{r, include=FALSE, echo=FALSE}
+# Read csv data
+pop_data_df <- read_csv("assig1_data.csv")
+pop_data_df
+pop_data_mills_df <- pop_data_df %>% 
+  mutate(pop_mills = population/1000000)
+pop_data_mills_df
+```
+
+
+###Question 1
+
+####A. Describe how annual population data are used to calculate $\frac{dN}{Ndt}$. 
+The expression $\frac{dN}{Ndt}$ represents the per capita rate change of a population (r). By taking the natural log of the annual population at time (t), dividing it by the number of individuals in the same population at time (t+1), and multiplying it by the expression $\frac{1}{(t+1)-t}$, the annual population data can be used to estimate per capita rate of change of the population.
+
+####B. Provide the calculation used to determine $\frac{dN}{Ndt}$ for each country during the time period 1963 to 1964.
+
+##### Brazil, $r= ln\left(\frac{81972001}{79602001})\right)$
+
+##### India, $r= ln\left(\frac{486639001}{476632001})\right)$
+
+##### Japan, $r= ln\left(\frac{96959001}{95929001})\right)$
+
+##### Mexico, $r= ln\left(\frac{43052001}{41715001})\right)$
+
+##### South Korea, $r= ln\left(\frac{27767001}{27138001})\right)$
+
+```{r, include = FALSE, echo = FALSE}
+brazil_r <- log(81972001/79602001)
+brazil_r
+
+india_r <- log(486639001/476632001)
+india_r
+
+japan_r <- log(96959001/95929001)
+japan_r
+
+mexico_r <- log(43052001/41715001)
+mexico_r
+
+southkorea_r <- log(27767001/27138001)
+southkorea_r
+
+set_colnames <- 
+
+r_table <- pop_data_mills_df %>% 
+  filter(year %in% c(1963,1964)) %>% 
+  select(country, year, pop_mills) %>% 
+  spread(year, pop_mills) %>% 
+  set_colnames(value = c("Country", "N0", "Nt")) %>% 
+  mutate(dNNdt_calc = log(Nt/N0),
+         dNNdt = c(0.029338507, 0.020777870, 0.010679874, 0.031547910, 0.022913305))
+
+
+r_table
+```
+
+```{r, echo= FALSE}
+rate_table  <- r_table %>%
+  select(Country, dNNdt_calc, dNNdt)
+kable(rate_table, digits = 4, col.names = c("Country",  "Calculated dN/Ndt", "Actual dN/Ndt"),
+      caption = "Calculated vs. Actual Per Capita Rate of Population Change by Country from 1963 to 1964") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "bordered")) 
+
+
+```
+####C. Calculate population rate change of one country from 1963 - 2004
+```{r}
+
+```
+

@@ -45,7 +45,7 @@ pop_data_mills_df
 ###Question 1
 
 ####A. Describe how annual population data are used to calculate $\frac{dN}{Ndt}$. 
-The expression $\frac{dN}{Ndt}$ represents the per capita rate change of a population (r). By taking the natural log of the annual population at time (t), dividing it by the number of individuals in the same population at time (t+1), and multiplying it by the expression $\frac{1}{(t+1)-t}$, the annual population data can be used to estimate per capita rate of change of the population.
+The expression $\frac{dN}{Ndt}$ represents the per capita rate change of a population (r) at time t. By taking the natural log of the annual population at time (t+1), dividing it by the initial number of individuals in the same population at time (t), and multiplying it by the expression $\frac{1}{(t+1)-t}$, the annual population data can be used to estimate per capita rate of change of the population.
 
 ####B. Provide the calculation used to determine $\frac{dN}{Ndt}$ for each country during the time period 1963 to 1964.
 
@@ -99,7 +99,94 @@ kable(rate_table, digits = 4, col.names = c("Country",  "Calculated dN/Ndt", "Ac
 
 ```
 ####C. Calculate population rate change of one country from 1963 - 2004
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+india_plot <- read_csv("india_data.csv") %>% 
+  mutate(pop_mill_i = population/1000000) %>%
+  select(country, year, pop_mill_i,dNNdti, dNNdt_calci) %>% 
+  ggplot(aes(x = dNNdt_calci, y = dNNdti)) +
+  geom_point(color = "black") +
+  geom_abline(method = "lm", se=FALSE, size = 0.5, color = "darkgreen") +
+  labs(x = "Calculated Per Capita Rate of Change", y = "Actual Per Capita Rate of Change") +
+  scale_x_continuous(limits = c(0.014, 0.024), breaks = seq(0.014, 0.024, by =0.0025)) + scale_y_continuous(limits = c(0.014, 0.024), breaks = seq(0.014, 0.024, by =0.0025)) +
+  theme_classic()
+
+india_plot
+  
+```
+
+
+###QUESTION 2
+
+####A. Graph $\frac{dN}{Ndt}$ vs. N~t~ for each country
+```{r, echo=FALSE}
+country_plots <- ggplot(pop_data_mills_df, aes(x = pop_mills, y= dNNdt)) +
+  geom_line()+
+  facet_wrap(~country, scales = "free") + 
+  labs(y = expression(paste("Per Capita Rate of Change ", (frac(dN, Ndt)))), x = "Population Size (Nt, Millions)") +
+  theme_classic() +
+  ggtitle("Per Capita Growth Rate versus Population Density of Five Countries")
+
+country_plots
+```
+
+####B. 
+
+
+####B.
+```{r, include=FALSE}
+#india_df_pop_mills <- read_csv("india_data.csv") %>% 
+ # mutate(india_pm = population/1000000) %>% 
+#  select(country, year, india_pm, dNNdti)
+#indiaplots <- ggplot(india_df_pop_mills, aes(x = india_pm, y= dNNdti)) +
+#  geom_line()+
+#  labs(y = expression(paste("Per Capita Rate of Change ", frac(dN, Ndt))), x = "Population Size (Millions)") +
+#  theme_classic() +
+#  ggtitle("Per Capita Growth Rate versus Population Density of India") +
+#  geom_smooth(method = "lm", se = FALSE) +
+#  scale_x_continuous(expand = c(0,0), limits = c(500, 3000 ), breaks = seq(500, 3000, 500)) +
+ # scale_y_continuous(expand = c(0,0), limits = c(0, 0.026), breaks = seq(0.012, 0.024, 0.004))
+
+#indiaplots
+
+
+#Estimate Carrying Capacity for India
+india_ck <- pop_data_df %>% 
+  filter(country == "India") %>% 
+  lm(population ~ dNNdt, data =.)
+
+india_ck
+summary(india_ck)
+
+brazil_ck <- pop_data_df %>% 
+   filter(country == "Brazil") %>% 
+  lm(population ~ dNNdt, data =.)
+
+brazil_ck
+summary(brazil_ck)
+```
+#### India
+##### $Population = 2.252*10^9 - 7.226*10^10(\frac{dN}{Ndt})$
+#####The carrying capacity (K)  when $\frac{dN}{Ndt}$ = 0 is $2.252*10^9$ or 2,252,000,000 people.
+
+
+#### Brazil
+##### $Population = 2.607*10^8 - 6.392*10^9(dNNdt)
+#####The carrying capacity (K) when $\frac{dN}{Ndt}$ = 0 is $2.607*10^8$ or 260,700,000 people. 
+
+
+###C.
 ```{r}
+country_plots_color <- ggplot(pop_data_mills_df, aes(x = pop_mills, y= dNNdt)) +
+  geom_line()+
+  facet_wrap(~country, scales = "free") + 
+  labs(y = expression(paste("Per Capita Rate of Change ", (frac(dN, Ndt)))), x = "Population Size (Nt, Millions)", size = "Calories Eaten (Person/Day)") +
+  theme_classic() +
+  ggtitle("Per Capita Growth Rate versus Population Density of Five Countries") + geom_point(aes(color = year, size = calories_pd)) + scale_color_distiller(palette = "Purples", name = "Year", direction = 1) +
+  theme(legend.position = "bottom",
+        legend.box = "vertical")
+
+country_plots_color
+
 
 ```
 

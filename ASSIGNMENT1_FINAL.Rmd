@@ -5,6 +5,7 @@ date: "2/3/2019"
 output:
   html_document: default
   pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -48,7 +49,7 @@ pop_data_mills_df
 ##Question 1
 
 ###A. Describe how annual population data are used to calculate $\frac{dN}{Ndt}$. 
-The expression $\frac{dN}{Ndt}$ represents the per capita rate change of a population (r) at time t. By taking the natural log of the annual population at time (t+1), dividing it by the initial number of individuals in the same population at time (t), and multiplying it by the expression $\frac{1}{(t+1)-t}$, the annual population data can be used to estimate per capita rate of change of the population.
+The expression $\frac{dN}{Ndt}$ represents the per capita rate change of a population (r) at time t. By taking the natural log of the annual population at time (t+1), dividing it by the initial number of individuals in the same population at time (t), and multiplying it by the expression $\frac{1}{(t+1)-t}$, the annual population data can be used to estimate per capita rate of change of the population. In this case, the time difference is 1 year, so the second term of the equation is equal to 1.  
 
 ###B. Provide the calculation used to determine $\frac{dN}{Ndt}$ for each country during the time period 1963 to 1964.
 
@@ -101,6 +102,8 @@ kable(rate_table, digits = 4, col.names = c("Country",  "Calculated dN/Ndt", "Ac
 
 
 ```
+The calculated values are exactly the same as the provided values for $\frac{dN}{Ndt}$
+
 ###C. Calculate population rate change of India from 1963 - 2004
 ```{r, echo = FALSE, message = FALSE, warning = FALSE}
 india_plot <- read_csv("india_data.csv") %>% 
@@ -112,8 +115,7 @@ india_plot <- read_csv("india_data.csv") %>%
   labs(x = "Calculated Per Capita Rate of Change", y = "Actual Per Capita Rate of Change") +
   scale_x_continuous(limits = c(0.014, 0.024), breaks = seq(0.014, 0.024, by =0.0025)) + scale_y_continuous(limits = c(0.014, 0.024), breaks = seq(0.014, 0.024, by =0.0025)) +
   theme_classic() +
-  ggtitle(expression(paste("      Actual vs. Calculated Per Capita
-                           Rate of Change in India 1963-2004",  (frac(dN, Ndt)))))
+  ggtitle(expression(paste("Actual vs. Calculated Per Capita Rate of Change in India 1963-2004  ",  (frac(dN, Ndt)))))
 
 india_plot
   
@@ -127,7 +129,7 @@ india_plot
 country_plots <- ggplot(pop_data_mills_df, aes(x = pop_mills, y= dNNdt)) +
   geom_line()+
   facet_wrap(~country, scales = "free") + 
-  labs(y = expression(paste("Per Capita Rate of Change ", (frac(dN, Ndt)))), x = "Population Size (N~t~, Millions)") +
+  labs(y = expression(paste("Per Capita Rate of Change ", (frac(dN, Ndt)))), x = "Population Size (Nt, Millions)") +
   theme_classic() +
   ggtitle("Per Capita Growth Rate versus Population Density of Five Countries")
 
@@ -172,7 +174,7 @@ summary(brazil_ck)
 
 
 #### Brazil
-##### $Population = 2.607*10^8 - 6.392*10^9(dNNdt)$
+##### $Population = 2.607*10^8 - 6.392*10^9(\frac{dN}{Ndt})$
 #####The carrying capacity (K) when $\frac{dN}{Ndt}$ = 0 is $2.607*10^8$ or 260,700,000 people. 
 
 
@@ -181,7 +183,7 @@ summary(brazil_ck)
 country_plots_color <- ggplot(pop_data_mills_df, aes(x = pop_mills, y= dNNdt)) +
   geom_line()+
   facet_wrap(~country, scales = "free") + 
-  labs(y = expression(paste("Per Capita Rate of Change ", (frac(dN, Ndt)))), x = "Population Size (Nt, Millions)", size = "Calories Eaten (Person/Day)") +
+  labs(y = expression(paste("Per Capita Rate of Change ", (frac(dN, Ndt)))), x = "Population Size (Nt, Millions)", size = "Calories Consumed (Person/Day)") +
   theme_classic() +
   ggtitle("Per Capita Growth Rate versus Population Density of Five Countries") + geom_point(aes(color = year, size = calories_pd)) + scale_color_distiller(palette = "Purples", name = "Year", direction = 1) +
   theme(legend.position = "bottom",
@@ -191,6 +193,8 @@ country_plots_color
 
 
 ```
+
+
 ##Question 3
 
 ###A. Perform a multilinear regression of education and food consumption for all countries
@@ -199,7 +203,7 @@ country_plots_color
 # Make a corr plot
 country_corr <- pop_data_df %>% 
   select(1:6)
-View(country_corr)
+
 
 country_corr <- cor(pop_data_df[2:6])
 country_cp <- corrplot(country_corr,
@@ -273,17 +277,18 @@ plot(sk_lm1)
 
 ####All Countries:
 Based on the linear regression
-$\frac{dN}{Ndt}\ $ = $2.975*10^{-2}$ + $1.292*10^{-7}$ (Calories (Person/Day)) - $2.95*10^{-2}$ (Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  However, the food consumption, defined as the number of calories eaten per person, per day does not have a significant (p=0.549) effect on $\frac{dN}{Ndt}\ $
+$\frac{dN}{Ndt}\ $ = $2.975*10^{-2}$ + $1.292*10^{-7}$(Calories (Person/Day)) - $2.95*10^{-2}$(Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  However, food consumption, defined as the number of calories eaten per person, per day does not have a significant (p=0.549) effect on $\frac{dN}{Ndt}\ $.
 
-All things other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ significantly increases by $2.95*10^{-2}$. 
+All other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ significantly decreases by $2.95*10^{-2}$. 
+
 All things other factors remaining constant, for each unit increase in calories per person, per day, $\frac{dN}{Ndt}\ $ increases by $1.292*10^{-7}$. 
 
-###B. Perform a multilinear regression of education and food consumption for each countries
+###B. Perform a multilinear regression of education and food consumption for each country
 ```{r, echo = FALSE, results = 'asis'}
 ##### Create Tables
 
 regression_table <- stargazer(pop_lm1, brazil_lm1, india_lm1, japan_lm1, mexico_lm1, sk_lm1,
-                      title = "Linear Regression of Education and Food Results",
+                      title = "Linear Regression of Education and Food Consumption Results",
                       type = "html",
                       dep.var.labels = c("Per Capita Rate of Change (dN/Ndt)"),
                       column.labels = c("All", "Brazil", "India", "Japan", "Mexico", "South Korea"), covariate.labels = c("Years of Education", "Calories Consumed Per Person Per Day"), digits=6,
@@ -294,38 +299,43 @@ regression_table <- stargazer(pop_lm1, brazil_lm1, india_lm1, japan_lm1, mexico_
 
 ####Brazil:
 Based on the linear regression
-$\frac{dN}{Ndt}\ $ = $3.631*10^{-2}$ - $1.150*10^{-6}$ (Calories (Person/Day)) - $2.420*10^{-3}$ (Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Food consumption, though less impactful than education, also has a significant (p<0.05) effect on $\frac{dN}{Ndt}\ $.
+$\frac{dN}{Ndt}\ $ = $3.631*10^{-2}$ - $1.150*10^{-6}$(Calories (Person/Day)) - $2.420*10^{-3}$(Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Food consumption, though less impactful than education, also has a significant (p<0.05) effect on $\frac{dN}{Ndt}\ $.
 
-All things other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $2.420*10^{-3}$. 
+All other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $2.420*10^{-3}$. 
+
 All things other factors remaining constant, for each unit increase in calories per person, per day, $\frac{dN}{Ndt}\ $ decreases by $1.150*10^{-6}$. 
 
 ####India
 Based on the linear regression
-$\frac{dN}{Ndt}\ $ = $2.600*10^{-2}$ - $4.433*10^{-7}$ (Calories (Person/Day)) - $1.523*10^{-3}$ (Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Food consumption, does not have a significant (p<0.05) effect on $\frac{dN}{Ndt}\ $ (p=0.793).
+$\frac{dN}{Ndt}\ $ = $2.600*10^{-2}$ - $4.433*10^{-7}$(Calories (Person/Day)) - $1.523*10^{-3}$(Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Food consumption, does not have a significant (p<0.05) effect on $\frac{dN}{Ndt}\ $ (p=0.793).
 
-All things other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $1.523*10^{-3}$. 
+All other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $1.523*10^{-3}$. 
+
 All things other factors remaining constant, for each unit increase in calories per person, per day, $\frac{dN}{Ndt}\ $ decreases by $1.523*10^{-3}$. 
 
 ####Japan:
 Based on the linear regression
-$\frac{dN}{Ndt}\ $ = $5.061*10^{-2}$ - $1.978*10^{-6}$ (Calories (Person/Day)) - $3.834*10^{-3}$ (Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Food consumption, also has a significant effect on $\frac{dN}{Ndt}\ $ (p<0.05).
+$\frac{dN}{Ndt}\ $ = $5.061*10^{-2}$ - $1.978*10^{-6}$(Calories (Person/Day)) - $3.834*10^{-3}$(Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Food consumption, also has a significant effect on $\frac{dN}{Ndt}\ $ (p<0.05).
 
-All things other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $3.834*10^{-3}$. 
-All things other factors remaining constant, for each unit increase in calories per person, per day, $\frac{dN}{Ndt}\ $ decreases by $1.978*10^{-6}$. 
+All other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $3.834*10^{-3}$. 
+
+All other factors remaining constant, for each unit increase in calories per person, per day, $\frac{dN}{Ndt}\ $ decreases by $1.978*10^{-6}$. 
 
 ####Mexico:
 Based on the linear regression
-$\frac{dN}{Ndt}\ $ = $5.888*10^{-2}$ - $5.306*10^{-6}$ (Calories (Person/Day)) - $2.280*10^{-3}$ (Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Calories eaten per person, per day simlilarly has a very significant effect on $\frac{dN}{Ndt}\ $ (p<0.001) in Mexico.
+$\frac{dN}{Ndt}\ $ = $5.888*10^{-2}$ - $5.306*10^{-6}$(Calories (Person/Day)) - $2.280*10^{-3}$(Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Calories eaten per person, per day simlilarly has a very significant effect on $\frac{dN}{Ndt}\ $ (p<0.001) in Mexico.
 
-All things other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $2.280*10^{-3}$. 
+All other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $2.280*10^{-3}$. 
+
 All things other factors remaining constant, for each unit increase in calories per person, per day, $\frac{dN}{Ndt}\ $ decreases by $5.306*10^{-6}$. 
 
 ####South Korea:
 Based on the linear regression
-$\frac{dN}{Ndt}\ $ = $3.858*10^{-2}$ - $4.279*10^{-7}$ (Calories (Person/Day)) - $2.757*10^{-3}$ (Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Calories eaten per person, per day is not a statistically significant predictor of $\frac{dN}{Ndt}\ $ (p=0.0658).
+$\frac{dN}{Ndt}\ $ = $3.858*10^{-2}$ - $4.279*10^{-7}$(Calories (Person/Day)) - $2.757*10^{-3}$(Years Educated), education level is a significant predicator of per capita population growth rate (p<0.001).  Calories eaten per person, per day is not a statistically significant predictor of $\frac{dN}{Ndt}\ $ (p=0.0658).
 
-All things other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $2.757*10^{-3}$. 
-All things other factors remaining constant, for each unit increase in calories per person, per day, $\frac{dN}{Ndt}\ $ decreases by $4.279*10^{-7}$. 
+All other factors remaining constant, for each unit increase in education level, $\frac{dN}{Ndt}\ $ decreases by $2.757*10^{-3}$. 
+
+All other factors remaining constant, for each unit increase in calories per person, per day, $\frac{dN}{Ndt}\ $ decreases by $4.279*10^{-7}$. 
 
 
 

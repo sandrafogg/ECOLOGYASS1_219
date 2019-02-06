@@ -1,0 +1,399 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Assignment1\_FINAL},
+            pdfauthor={Sandra Fogg},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Assignment1\_FINAL}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Sandra Fogg}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2/3/2019}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
+\begin{document}
+\maketitle
+
+\subsection{Question 1}\label{question-1}
+
+\subsubsection{\texorpdfstring{A. Describe how annual population data
+are used to calculate
+\(\frac{dN}{Ndt}\).}{A. Describe how annual population data are used to calculate \textbackslash{}frac\{dN\}\{Ndt\}.}}\label{a.-describe-how-annual-population-data-are-used-to-calculate-fracdnndt.}
+
+The expression \(\frac{dN}{Ndt}\) represents the per capita rate change
+of a population (r) at time t. By taking the natural log of the annual
+population at time (t+1), dividing it by the initial number of
+individuals in the same population at time (t), and multiplying it by
+the expression \(\frac{1}{(t+1)-t}\), the annual population data can be
+used to estimate per capita rate of change of the population.
+
+\subsubsection{\texorpdfstring{B. Provide the calculation used to
+determine \(\frac{dN}{Ndt}\) for each country during the time period
+1963 to
+1964.}{B. Provide the calculation used to determine \textbackslash{}frac\{dN\}\{Ndt\} for each country during the time period 1963 to 1964.}}\label{b.-provide-the-calculation-used-to-determine-fracdnndt-for-each-country-during-the-time-period-1963-to-1964.}
+
+\subparagraph{\texorpdfstring{Brazil,
+\(r= ln\left(\frac{81972001}{79602001}\right)\)}{Brazil, r= ln\textbackslash{}left(\textbackslash{}frac\{81972001\}\{79602001\}\textbackslash{}right)}}\label{brazil-r-lnleftfrac8197200179602001right}
+
+\subparagraph{\texorpdfstring{India,
+\(r= ln\left(\frac{486639001}{476632001}\right)\)}{India, r= ln\textbackslash{}left(\textbackslash{}frac\{486639001\}\{476632001\}\textbackslash{}right)}}\label{india-r-lnleftfrac486639001476632001right}
+
+\subparagraph{\texorpdfstring{Japan,
+\(r= ln\left(\frac{96959001}{95929001}\right)\)}{Japan, r= ln\textbackslash{}left(\textbackslash{}frac\{96959001\}\{95929001\}\textbackslash{}right)}}\label{japan-r-lnleftfrac9695900195929001right}
+
+\subparagraph{\texorpdfstring{Mexico,
+\(r= ln\left(\frac{43052001}{41715001}\right)\)}{Mexico, r= ln\textbackslash{}left(\textbackslash{}frac\{43052001\}\{41715001\}\textbackslash{}right)}}\label{mexico-r-lnleftfrac4305200141715001right}
+
+\subparagraph{\texorpdfstring{South Korea,
+\(r= ln\left(\frac{27767001}{27138001}\right)\)}{South Korea, r= ln\textbackslash{}left(\textbackslash{}frac\{27767001\}\{27138001\}\textbackslash{}right)}}\label{south-korea-r-lnleftfrac2776700127138001right}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-4}Calculated vs. Actual Per Capita Rate of Population Change by Country from 1963 to 1964}
+\centering
+\begin{tabular}[t]{l|r|r}
+\hline
+Country & Calculated dN/Ndt & Actual dN/Ndt\\
+\hline
+Brazil & 0.0293 & 0.0293\\
+\hline
+India & 0.0208 & 0.0208\\
+\hline
+Japan & 0.0107 & 0.0107\\
+\hline
+Mexico & 0.0315 & 0.0315\\
+\hline
+South Korea & 0.0229 & 0.0229\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{C. Calculate population rate change of India from 1963 -
+2004}\label{c.-calculate-population-rate-change-of-india-from-1963---2004}
+
+\includegraphics{ASSIGNMENT1_FINAL_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\subsection{QUESTION 2}\label{question-2}
+
+\subsubsection{\texorpdfstring{A. Graph \(\frac{dN}{Ndt}\)
+vs.~N\textsubscript{t} for each
+country}{A. Graph \textbackslash{}frac\{dN\}\{Ndt\} vs.~Nt for each country}}\label{a.-graph-fracdnndt-vs.nt-for-each-country}
+
+\includegraphics{ASSIGNMENT1_FINAL_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\subsubsection{B. Estimate the carrying capacity for India and
+Brazil}\label{b.-estimate-the-carrying-capacity-for-india-and-brazil}
+
+\paragraph{India}\label{india}
+
+\subparagraph{\texorpdfstring{\(Population = 2.252*10^9 - 7.226*10^{10}(\frac{dN}{Ndt})\)}{Population = 2.252*10\^{}9 - 7.226*10\^{}\{10\}(\textbackslash{}frac\{dN\}\{Ndt\})}}\label{population-2.252109---7.2261010fracdnndt}
+
+\subparagraph{\texorpdfstring{The carrying capacity (K) when
+\(\frac{dN}{Ndt}\) = 0 is \(2.252*10^9\) or 2,252,000,000
+people.}{The carrying capacity (K) when \textbackslash{}frac\{dN\}\{Ndt\} = 0 is 2.252*10\^{}9 or 2,252,000,000 people.}}\label{the-carrying-capacity-k-when-fracdnndt-0-is-2.252109-or-2252000000-people.}
+
+\paragraph{Brazil}\label{brazil}
+
+\subparagraph{\texorpdfstring{\(Population = 2.607*10^8 - 6.392*10^9(dNNdt)\)}{Population = 2.607*10\^{}8 - 6.392*10\^{}9(dNNdt)}}\label{population-2.607108---6.392109dnndt}
+
+\subparagraph{\texorpdfstring{The carrying capacity (K) when
+\(\frac{dN}{Ndt}\) = 0 is \(2.607*10^8\) or 260,700,000
+people.}{The carrying capacity (K) when \textbackslash{}frac\{dN\}\{Ndt\} = 0 is 2.607*10\^{}8 or 260,700,000 people.}}\label{the-carrying-capacity-k-when-fracdnndt-0-is-2.607108-or-260700000-people.}
+
+\subsubsection{C. Modify the plot to include year and food
+consumption}\label{c.-modify-the-plot-to-include-year-and-food-consumption}
+
+\includegraphics{ASSIGNMENT1_FINAL_files/figure-latex/unnamed-chunk-8-1.pdf}
+\#\#Question 3
+
+\subsubsection{A. Perform a multilinear regression of education and food
+consumption for all
+countries}\label{a.-perform-a-multilinear-regression-of-education-and-food-consumption-for-all-countries}
+
+All Countries: Based on the linear regression \(\frac{dN}{Ndt}\ \) =
+\(2.975*10^{-2}\) + \(1.292*10^{-7}\) (Calories (Person/Day)) -
+\(2.95*10^{-2}\) (Years Educated), education level is a significant
+predicator of per capita population growth rate (p\textless{}0.001).
+However, the food consumption, defined as the number of calories eaten
+per person, per day does not have a significant (p=0.549) effect on
+\(\frac{dN}{Ndt}\ \)
+
+\subsubsection{B. Perform a multilinear regression of education and food
+consumption for each
+countries}\label{b.-perform-a-multilinear-regression-of-education-and-food-consumption-for-each-countries}
+
+Brazil: Based on the linear regression \(\frac{dN}{Ndt}\ \) =
+\(3.631*10^{-2}\) - \(1.150*10^{-6}\) (Calories (Person/Day)) -
+\(2.420*10^{-3}\) (Years Educated), education level is a significant
+predicator of per capita population growth rate (p\textless{}0.001).
+Food consumption, though less impactful than education, also has a
+significant (p\textless{}0.05) effect on \(\frac{dN}{Ndt}\ \).
+
+Japan: Based on the linear regression \(\frac{dN}{Ndt}\ \) =
+\(5.061*10^{-2}\) - \(1.978*10^{-6}\) (Calories (Person/Day)) -
+\(3.834*10^{-3}\) (Years Educated), education level is a significant
+predicator of per capita population growth rate (p\textless{}0.001).
+Food consumption, also has a significant effect on \(\frac{dN}{Ndt}\ \)
+(p\textless{}0.05).
+
+Mexico: Based on the linear regression \(\frac{dN}{Ndt}\ \) =
+\(5.888*10^{-2}\) - \(5.306*10^{-6}\) (Calories (Person/Day)) -
+\(2.280*10^{-3}\) (Years Educated), education level is a significant
+predicator of per capita population growth rate (p\textless{}0.001).
+Calories eaten per person, per day simlilarly has a very significant
+effect on \(\frac{dN}{Ndt}\ \) (p\textless{}0.001) in Mexico.
+
+South Korea: Based on the linear regression \(\frac{dN}{Ndt}\ \) =
+\(3.858*10^{-2}\) - \(4.279*10^{-7}\) (Calories (Person/Day)) -
+\(2.757*10^{-3}\) (Years Educated), education level is a significant
+predicator of per capita population growth rate (p\textless{}0.001).
+Calories eaten per person, per day is not a statistically significant
+predictor of \(\frac{dN}{Ndt}\ \) (p=0.0658).
+
+\begin{verbatim}
+## 
+## \begin{table}[!htbp] \centering 
+##   \caption{Linear Regression of Education and Food Results} 
+##   \label{} 
+## \begin{tabular}{@{\extracolsep{5pt}}lccccc} 
+## \\[-1.8ex]\hline 
+## \hline \\[-1.8ex] 
+##  & \multicolumn{5}{c}{\textit{Dependent variable:}} \\ 
+## \cline{2-6} 
+## \\[-1.8ex] & \multicolumn{5}{c}{Per Capita Rate of Change (dN/Ndt)} \\ 
+##  & All & Brazil & India & Japan & Mexico \\ 
+## \\[-1.8ex] & (1) & (2) & (3) & (4) & (5)\\ 
+## \hline \\[-1.8ex] 
+##  Years of Education & $-$0.0022489$^{***}$ & $-$0.0024205$^{***}$ & $-$0.0015234$^{***}$ & $-$0.0038341$^{***}$ & $-$0.0022801$^{***}$ \\ 
+##   & (0.0000871) & (0.0003427) & (0.0002867) & (0.0002543) & (0.0002600) \\ 
+##   & & & & & \\ 
+##  Calories Consumed Per Person Per Day & 0.0000001 & $-$0.0000012$^{**}$ & $-$0.0000004 & $-$0.0000020$^{**}$ & $-$0.0000053$^{***}$ \\ 
+##   & (0.0000002) & (0.0000005) & (0.0000017) & (0.0000009) & (0.0000007) \\ 
+##   & & & & & \\ 
+##  Constant & 0.0297466$^{***}$ & 0.0363112$^{***}$ & 0.0260048$^{***}$ & 0.0506058$^{***}$ & 0.0588777$^{***}$ \\ 
+##   & (0.0009831) & (0.0019296) & (0.0037913) & (0.0027957) & (0.0021538) \\ 
+##   & & & & & \\ 
+## \hline \\[-1.8ex] 
+## Observations & 205 & 41 & 41 & 41 & 41 \\ 
+## R$^{2}$ & 0.7702826 & 0.9259760 & 0.6185119 & 0.9150605 & 0.9638313 \\ 
+## Adjusted R$^{2}$ & 0.7680082 & 0.9220800 & 0.5984336 & 0.9105900 & 0.9619277 \\ 
+## Residual Std. Error & 0.0036645 (df = 202) & 0.0013327 (df = 38) & 0.0013202 (df = 38) & 0.0013266 (df = 38) & 0.0013046 (df = 38) \\ 
+## F Statistic & 338.6707000$^{***}$ (df = 2; 202) & 237.6735000$^{***}$ (df = 2; 38) & 30.8049700$^{***}$ (df = 2; 38) & 204.6885000$^{***}$ (df = 2; 38) & 506.3163000$^{***}$ (df = 2; 38) \\ 
+## \hline 
+## \hline \\[-1.8ex] 
+## \textit{Note:}  & \multicolumn{5}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+## \end{tabular} 
+## \end{table} 
+## 
+## \begin{table}[!htbp] \centering 
+##   \caption{Linear Regression of Education and Food Results} 
+##   \label{} 
+## \begin{tabular}{@{\extracolsep{5pt}}lccccccc} 
+## \\[-1.8ex]\hline 
+## \hline \\[-1.8ex] 
+## Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Pctl(25)} & \multicolumn{1}{c}{Pctl(75)} & \multicolumn{1}{c}{Max} \\ 
+## \hline \\[-1.8ex] 
+## \hline \\[-1.8ex] 
+## \end{tabular} 
+## \end{table}
+\end{verbatim}
+
+{[}1{]} ``''\\
+{[}2{]} ``\textbackslash{}begin\{table\}{[}!htbp{]}
+\textbackslash{}centering''\\
+{[}3{]} " \textbackslash{}caption\{Linear Regression of Education and
+Food Results\} "\\
+{[}4{]} " \textbackslash{}label\{\} "\\
+{[}5{]}
+``\textbackslash{}begin\{tabular\}\{@\{\textbackslash{}extracolsep\{5pt\}\}lccccc\}''\\
+{[}6{]}
+``\textbackslash{}\textbackslash{}{[}-1.8ex{]}\textbackslash{}hline''\\
+{[}7{]} ``\textbackslash{}hline
+\textbackslash{}\textbackslash{}{[}-1.8ex{]}''\\
+{[}8{]} " \&
+\textbackslash{}multicolumn\{5\}\{c\}\{\textbackslash{}textit\{Dependent
+variable:\}\} \textbackslash{}\textbackslash{} "\\
+{[}9{]} ``\textbackslash{}cline\{2-6\}''\\
+{[}10{]} ``\textbackslash{}\textbackslash{}{[}-1.8ex{]} \&
+\textbackslash{}multicolumn\{5\}\{c\}\{Per Capita Rate of Change
+(dN/Ndt)\} \textbackslash{}\textbackslash{}''\\
+{[}11{]} " \& All \& Brazil \& India \& Japan \& Mexico
+\textbackslash{}\textbackslash{} "\\
+{[}12{]} ``\textbackslash{}\textbackslash{}{[}-1.8ex{]} \& (1) \& (2) \&
+(3) \& (4) \& (5)\textbackslash{}\textbackslash{}''\\
+{[}13{]} ``\textbackslash{}hline
+\textbackslash{}\textbackslash{}{[}-1.8ex{]}''\\
+{[}14{]} " Years of Education \&
+\$-\(0.0022489\)\^{}\{\textbf{\emph{\}\$ \& \$-\(0.0024205\)\^{}\{}}\}\$
+\& \$-\(0.0015234\)\^{}\{\textbf{\emph{\}\$ \&
+\$-\(0.0038341\)\^{}\{}}\}\$ \& \$-\(0.0022801\)\^{}\{\emph{\textbf{\}\$
+\textbackslash{}\textbackslash{} "\\
+{[}15{]} " \& (0.0000871) \& (0.0003427) \& (0.0002867) \& (0.0002543)
+\& (0.0002600) \textbackslash{}\textbackslash{} "\\
+{[}16{]} " \& \& \& \& \& \textbackslash{}\textbackslash{} "\\
+{[}17{]} " Calories Consumed Per Person Per Day \& 0.0000001 \&
+\$-\(0.0000012\)\^{}\{}\}\$ \& \$-\$0.0000004 \&
+\$-\(0.0000020\)\^{}\{\textbf{\}\$ \& \$-\(0.0000053\)\^{}\{}}\}\$
+\textbackslash{}\textbackslash{} "\\
+{[}18{]} " \& (0.0000002) \& (0.0000005) \& (0.0000017) \& (0.0000009)
+\& (0.0000007) \textbackslash{}\textbackslash{} "\\
+{[}19{]} " \& \& \& \& \& \textbackslash{}\textbackslash{} "\\
+{[}20{]} " Constant \& 0.0297466\(^{***}\) \& 0.0363112\(^{***}\) \&
+0.0260048\(^{***}\) \& 0.0506058\(^{***}\) \& 0.0588777\(^{***}\)
+\textbackslash{}\textbackslash{} "\\
+{[}21{]} " \& (0.0009831) \& (0.0019296) \& (0.0037913) \& (0.0027957)
+\& (0.0021538) \textbackslash{}\textbackslash{} "\\
+{[}22{]} " \& \& \& \& \& \textbackslash{}\textbackslash{} "\\
+{[}23{]} ``\textbackslash{}hline
+\textbackslash{}\textbackslash{}{[}-1.8ex{]}''\\
+{[}24{]} ``Observations \& 205 \& 41 \& 41 \& 41 \& 41
+\textbackslash{}\textbackslash{}''\\
+{[}25{]} ``R\(^{2}\) \& 0.7702826 \& 0.9259760 \& 0.6185119 \& 0.9150605
+\& 0.9638313 \textbackslash{}\textbackslash{}''\\
+{[}26{]} ``Adjusted R\(^{2}\) \& 0.7680082 \& 0.9220800 \& 0.5984336 \&
+0.9105900 \& 0.9619277 \textbackslash{}\textbackslash{}''\\
+{[}27{]} ``Residual Std. Error \& 0.0036645 (df = 202) \& 0.0013327 (df
+= 38) \& 0.0013202 (df = 38) \& 0.0013266 (df = 38) \& 0.0013046 (df =
+38) \textbackslash{}\textbackslash{}''\\
+{[}28{]} ``F Statistic \& 338.6707000\(^{***}\) (df = 2; 202) \&
+237.6735000\(^{***}\) (df = 2; 38) \& 30.8049700\(^{***}\) (df = 2; 38)
+\& 204.6885000\(^{***}\) (df = 2; 38) \& 506.3163000\(^{***}\) (df = 2;
+38) \textbackslash{}\textbackslash{}''\\
+{[}29{]} ``\textbackslash{}hline''\\
+{[}30{]} ``\textbackslash{}hline
+\textbackslash{}\textbackslash{}{[}-1.8ex{]}''\\
+{[}31{]} ``\textbackslash{}textit\{Note:\} \&
+\textbackslash{}multicolumn\{5\}\{r\}\{\(^{*}\)p\$\textless{}\$0.1;
+\(^{**}\)p\$\textless{}\$0.05; \(^{***}\)p\$\textless{}\$0.01\}
+\textbackslash{}\textbackslash{}''\\
+{[}32{]} ``\textbackslash{}end\{tabular\}''\\
+{[}33{]} ``\textbackslash{}end\{table\}''\\
+{[}34{]} ``''\\
+{[}35{]} ``\textbackslash{}begin\{table\}{[}!htbp{]}
+\textbackslash{}centering''\\
+{[}36{]} " \textbackslash{}caption\{Linear Regression of Education and
+Food Results\} "\\
+{[}37{]} " \textbackslash{}label\{\} "\\
+{[}38{]}
+``\textbackslash{}begin\{tabular\}\{@\{\textbackslash{}extracolsep\{5pt\}\}lccccccc\}''\\
+{[}39{]}
+``\textbackslash{}\textbackslash{}{[}-1.8ex{]}\textbackslash{}hline''\\
+{[}40{]} ``\textbackslash{}hline
+\textbackslash{}\textbackslash{}{[}-1.8ex{]}''\\
+{[}41{]} ``Statistic \& \textbackslash{}multicolumn\{1\}\{c\}\{N\} \&
+\textbackslash{}multicolumn\{1\}\{c\}\{Mean\} \&
+\textbackslash{}multicolumn\{1\}\{c\}\{St.~Dev.\} \&
+\textbackslash{}multicolumn\{1\}\{c\}\{Min\} \&
+\textbackslash{}multicolumn\{1\}\{c\}\{Pctl(25)\} \&
+\textbackslash{}multicolumn\{1\}\{c\}\{Pctl(75)\} \&
+\textbackslash{}multicolumn\{1\}\{c\}\{Max\}
+\textbackslash{}\textbackslash{}'' {[}42{]} ``\textbackslash{}hline
+\textbackslash{}\textbackslash{}{[}-1.8ex{]}''\\
+{[}43{]} ``\textbackslash{}hline
+\textbackslash{}\textbackslash{}{[}-1.8ex{]}''\\
+{[}44{]} ``\textbackslash{}end\{tabular\}''\\
+{[}45{]} ``\textbackslash{}end\{table\}''\\
+\textbackslash{}begin\{table\}{[}!htbp{]}
+\centering    \caption{Linear Regression of Education and Food Results}    \label{}
+\textbackslash{}resizebox\{1.0\textwidth\}\{!\}\{
+
+\begin{tabular}{@{\extracolsep{5pt}}lccccc}  \\[-1.8ex]\hline  \hline \\[-1.8ex]   & \multicolumn{5}{c}{\textit{Dependent variable:}} \\  \cline{2-6}  \\[-1.8ex] & \multicolumn{5}{c}{Per Capita Rate of Change (dN/Ndt)} \\   & All & Brazil & India & Japan & Mexico \\  \\[-1.8ex] & (1) & (2) & (3) & (4) & (5)\\  \hline \\[-1.8ex]   Years of Education & $-$0.0022489$^{***}$ & $-$0.0024205$^{***}$ & $-$0.0015234$^{***}$ & $-$0.0038341$^{***}$ & $-$0.0022801$^{***}$ \\    & (0.0000871) & (0.0003427) & (0.0002867) & (0.0002543) & (0.0002600) \\    & & & & & \\   Calories Consumed Per Person Per Day & 0.0000001 & $-$0.0000012$^{**}$ & $-$0.0000004 & $-$0.0000020$^{**}$ & $-$0.0000053$^{***}$ \\    & (0.0000002) & (0.0000005) & (0.0000017) & (0.0000009) & (0.0000007) \\    & & & & & \\   Constant & 0.0297466$^{***}$ & 0.0363112$^{***}$ & 0.0260048$^{***}$ & 0.0506058$^{***}$ & 0.0588777$^{***}$ \\    & (0.0009831) & (0.0019296) & (0.0037913) & (0.0027957) & (0.0021538) \\    & & & & & \\  \hline \\[-1.8ex]  Observations & 205 & 41 & 41 & 41 & 41 \\  R$^{2}$ & 0.7702826 & 0.9259760 & 0.6185119 & 0.9150605 & 0.9638313 \\  Adjusted R$^{2}$ & 0.7680082 & 0.9220800 & 0.5984336 & 0.9105900 & 0.9619277 \\  Residual Std. Error & 0.0036645 (df = 202) & 0.0013327 (df = 38) & 0.0013202 (df = 38) & 0.0013266 (df = 38) & 0.0013046 (df = 38) \\  F Statistic & 338.6707000$^{***}$ (df = 2; 202) & 237.6735000$^{***}$ (df = 2; 38) & 30.8049700$^{***}$ (df = 2; 38) & 204.6885000$^{***}$ (df = 2; 38) & 506.3163000$^{***}$ (df = 2; 38) \\  \hline  \hline \\[-1.8ex]  \textit{Note:}  & \multicolumn{5}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\  \end{tabular}
+
+\textbackslash{}end\{table\} \textbackslash{}begin\{table\}{[}!htbp{]}
+\centering    \caption{Linear Regression of Education and Food Results}    \label{}
+\textbackslash{}resizebox\{1.0\textwidth\}\{!\}\{
+
+\begin{tabular}{@{\extracolsep{5pt}}lccccccc}  \\[-1.8ex]\hline  \hline \\[-1.8ex]  Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Pctl(25)} & \multicolumn{1}{c}{Pctl(75)} & \multicolumn{1}{c}{Max} \\  \hline \\[-1.8ex]  \hline \\[-1.8ex]  \end{tabular}
+
+\textbackslash{}end\{table\}
+
+
+\end{document}
